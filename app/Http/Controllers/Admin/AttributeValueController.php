@@ -53,6 +53,6 @@ class AttributeValueController extends Controller
         $attributeValue = AttributeValue::findOrFail($request->input('id'));
         $attributeValue->delete();
 
-        return response()->json(['status' => 'success', 'message' => 'Attribute value deleted successfully.']);
+        return response()->json(['status' => 'success', 'message' => 'Valeur d\'attribut supprimé avec succès.']);
     }
 }

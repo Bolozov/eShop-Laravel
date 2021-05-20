@@ -15,12 +15,12 @@
                     @csrf
                     <div class="tile-body">
                         <div class="form-group">
-                            <label class="control-label" for="name">Name <span class="m-l-5 text-danger"> *</span></label>
+                            <label class="control-label" for="name">Nom <span class="m-l-5 text-danger"> *</span></label>
                             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{ old('name') }}"/>
                             @error('name') {{ $message }} @enderror
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Magasin Logo</label>
+                            <label class="control-label">Logo Magasin </label>
                             <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo"/>
                             @error('logo') {{ $message }} @enderror
                         </div>

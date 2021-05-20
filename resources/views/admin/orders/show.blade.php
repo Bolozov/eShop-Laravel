@@ -20,18 +20,18 @@
                         </div>
                     </div>
                     <div class="row invoice-info">
-                        <div class="col-4">Placed By
+                        <div class="col-4">Client
                             <address><strong>{{ $order->user->fullName }}</strong><br>Email: {{ $order->user->email }}</address>
                         </div>
-                        <div class="col-4">Ship To
+                        <div class="col-4">Envoyez à
                             <address><strong>{{ $order->first_name }} {{ $order->last_name }}</strong><br>{{ $order->address }}<br>{{ $order->city }}, {{ $order->country }} {{ $order->post_code }}<br>{{ $order->phone_number }}<br></address>
                         </div>
                         <div class="col-4">
-                            <b>Order ID:</b> {{ $order->order_number }}<br>
-                            <b>Amount:</b> {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}<br>
-                            <b>Payment Method:</b> {{ $order->payment_method }}<br>
-                            <b>Payment Status:</b> {{ $order->payment_status == 1 ? 'Completed' : 'Not Completed' }}<br>
-                            <b>Order Status:</b> {{ $order->status }}<br>
+                            <b>ID Commande:</b> {{ $order->order_number }}<br>
+                            <b>Montante:</b> {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}<br>
+                            <b>Mode de paiement:</b> {{ $order->payment_method }}<br>
+                            <b>Statut de paiement:</b> {{ $order->payment_status == 1 ? 'Completed' : 'Not Completed' }}<br>
+                            <b>Statut de la commande:</b> {{ $order->status }}<br>
                         </div>
                     </div>
                     <div class="row">
@@ -39,11 +39,11 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Qty</th>
-                                    <th>Product</th>
+                                    <th>ID</th>
+                                    <th>Produit</th>
                                     <th>SKU #</th>
-                                    <th>Qty</th>
-                                    <th>Subtotal</th>
+                                    <th>Quantité</th>
+                                    <th>Sous-total</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -29,7 +29,7 @@ class AttributeController extends BaseController
     {
         $attributes = $this->attributeRepository->listAttributes();
 
-        $this->setPageTitle('Attributes', 'List of all attributes');
+        $this->setPageTitle('Attributs', 'Liste de tous les attributs');
         return view('admin.attributes.index', compact('attributes'));
     }
 
@@ -38,7 +38,7 @@ class AttributeController extends BaseController
      */
     public function create()
     {
-        $this->setPageTitle('Attributes', 'Create Attribute');
+        $this->setPageTitle('Attributs', 'Créer un attribut');
         return view('admin.attributes.create');
     }
 
@@ -60,9 +60,9 @@ class AttributeController extends BaseController
         $attribute = $this->attributeRepository->createAttribute($params);
 
         if (!$attribute) {
-            return $this->responseRedirectBack('Error occurred while creating attribute.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la création d\'un attribut.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.attributes.index', 'Attribute added successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.attributes.index', 'Attribut ajouté avec succès' ,'success',false, false);
     }
 
     /**
@@ -73,7 +73,7 @@ class AttributeController extends BaseController
     {
         $attribute = $this->attributeRepository->findAttributeById($id);
 
-        $this->setPageTitle('Attributes', 'Edit Attribute : '.$attribute->name);
+        $this->setPageTitle('Attributes', 'Modifier un attribut : '.$attribute->name);
         return view('admin.attributes.edit', compact('attribute'));
     }
 
@@ -95,9 +95,9 @@ class AttributeController extends BaseController
         $attribute = $this->attributeRepository->updateAttribute($params);
 
         if (!$attribute) {
-            return $this->responseRedirectBack('Error occurred while updating attribute.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la mise à jour de l\'attribut.', 'error', true, true);
         }
-        return $this->responseRedirectBack('Attribute updated successfully' ,'success',false, false);
+        return $this->responseRedirectBack('Attribut mis à jour avec succès' ,'success',false, false);
     }
 
     /**
@@ -109,8 +109,8 @@ class AttributeController extends BaseController
         $attribute = $this->attributeRepository->deleteAttribute($id);
 
         if (!$attribute) {
-            return $this->responseRedirectBack('Error occurred while deleting attribute.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la suppression de l\'attribut.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.attributes.index', 'Attribute deleted successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.attributes.index', 'Attribut supprimé avec succès' ,'success',false, false);
     }
 }

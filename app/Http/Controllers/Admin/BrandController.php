@@ -59,9 +59,9 @@ class BrandController extends BaseController
         $brand = $this->brandRepository->createBrand($params);
 
         if (!$brand) {
-            return $this->responseRedirectBack('Error occurred while creating brand.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la création de magasins.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.brands.index', 'Brand added successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.brands.index', 'Magasin ajouté avec succès' ,'success',false, false);
     }
 
     /**
@@ -93,9 +93,9 @@ class BrandController extends BaseController
         $brand = $this->brandRepository->updateBrand($params);
 
         if (!$brand) {
-            return $this->responseRedirectBack('Error occurred while updating brand.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la mise à jour du magasin.', 'error', true, true);
         }
-        return $this->responseRedirectBack('Brand updated successfully' ,'success',false, false);
+        return $this->responseRedirectBack('Magasin mis à jour avec succès' ,'success',false, false);
     }
 
     /**
@@ -107,8 +107,8 @@ class BrandController extends BaseController
         $brand = $this->brandRepository->deleteBrand($id);
 
         if (!$brand) {
-            return $this->responseRedirectBack('Error occurred while deleting brand.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la suppression du magasin.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.brands.index', 'Brand deleted successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.brands.index', 'Magasin supprimé avec succès' ,'success',false, false);
     }
 }

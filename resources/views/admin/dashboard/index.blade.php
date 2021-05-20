@@ -47,45 +47,21 @@
 
 
 <div class="card border-secondary mb-3">
-  <div class="card-header text-primary">
-  <h5> <i class="fa fa-file "></i>  Commandes reçu en  {{now()->year}} ( {{ $ordersCount }} )</h5>
-  </div>
-  <div class="card-body text-secondary">
-  {!! $chart->container() !!}
-  </div>
-</div>
-<div class="card border-secondary mb-3">
-  <div class="card-header text-primary">
-  <h5> <i class="fa fa-file "></i>  Nouveau Clients en  {{now()->year}} ( {{ $usersCount }} )</h5>
-  </div>
-  <div class="card-body text-secondary">
-  {!! $newUsersChart->container() !!}
-  </div>
-</div>{{-- <div class="container-fluid">
-
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="customRange1">Année : &nbsp</label>
-                    @foreach ($years as $year)
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="{{ $year }}" name="year" class="custom-control-input" value="{{ $year }}" @if($actualYear==$year) checked @endif>
-<label class="custom-control-label" for="{{ $year }}">{{ $year }}</label>
-</div>
-@endforeach
-</div>
-</div>
-</div>
-</div>
-
-<div class="col-12">
-    <div class="card">
-        <div id="ordersChart" style="height: 300px;" class="card-body">
-        </div>
+    <div class="card-header text-primary">
+        <h5> <i class="fa fa-file "></i> Commandes reçu en {{now()->year}} ( {{ $ordersCount }} )</h5>
+    </div>
+    <div class="card-body text-secondary">
+        {!! $chart->container() !!}
     </div>
 </div>
-
+<div class="card border-secondary mb-3">
+    <div class="card-header text-primary">
+        <h5> <i class="fa fa-file "></i> Nouveau Clients en {{now()->year}} ( {{ $usersCount }} )</h5>
+    </div>
+    <div class="card-body text-secondary">
+        {!! $newUsersChart->container() !!}
+    </div>
+</div>
 </div> --}}
 
 <script src="{{ LarapexChart::cdn() }}"></script>
