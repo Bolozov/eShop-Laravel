@@ -76,8 +76,8 @@
                                 <div class="mb-3">
                                     @if ($product->sale_price > 0)
                                     <var class="price h3 text-danger">
-                                        <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->sale_price }}</span>
-                                        <del class="price-old"> {{ config('settings.currency_symbol') }}{{ $product->price }}</del>
+                                        <span class="currency"></span><span class="num" id="productPrice">{{ $product->sale_price }} {{ config('settings.currency_symbol') }}</span>
+                                        <del class="price-old"> {{ $product->price }} {{ config('settings.currency_symbol') }}</del>
                                     </var>
                                     @else
                                     <var class="price h3 text-success">

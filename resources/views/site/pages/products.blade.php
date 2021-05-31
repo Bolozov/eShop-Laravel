@@ -42,17 +42,17 @@
 
                     <div class="row">
                         @forelse($products as $product)
-                             <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
                                     <div class="badge text-white badge-"></div><a class="d-block" href="{{ route('product.show', $product->slug) }}">
-                                     @if ($product->images->count() > 0)
-                                                                         <img class="img-fluid w-100" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
+                                        @if ($product->images->count() > 0)
+                                        <img class="img-fluid w-100" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
 
-                            @else
-                                                                                                     <img class="img-fluid w-100" src="https://via.placeholder.com/176" alt="...">
+                                        @else
+                                        <img class="img-fluid w-100" src="https://via.placeholder.com/176" alt="...">
 
-                            @endif
+                                        @endif
                                     </a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
@@ -64,12 +64,16 @@
                                     </div>
                                 </div>
                                 <h6> <a class="reset-anchor" href="{{ route('product.show', $product->slug) }}">{{ $product->name}}</a></h6>
-                                <p class="small text-muted">{{ $product->price}} DT</p>
+                                @if ($product->sale_price)
+                                <del class="text-danger">{{ $product->price}} DT</del> {{ $product->sale_price}} DT
+                                @else
+                                {{ $product->price}} DT
+                                @endif
                                 <p class="small text-muted">{{ $product->brand->name}}</p>
                             </div>
                         </div>
                         @empty
-                            <p>0 Produit Trouvé.</p>
+                        <p>0 Produit Trouvé.</p>
                         @endforelse
 
 
