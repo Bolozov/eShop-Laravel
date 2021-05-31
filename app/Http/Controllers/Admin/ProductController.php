@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Contracts\BrandContract;
-use App\Contracts\CategoryContract;
 use App\Contracts\ProductContract;
+use App\Contracts\CategoryContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreProductFormRequest;
 
@@ -52,9 +53,9 @@ class ProductController extends BaseController
         $product = $this->productRepository->createProduct($params);
 
         if (!$product) {
-            return $this->responseRedirectBack('Error occurred while creating product.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la création de produit.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.products.index', 'Product added successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.products.index', 'Produit ajouté avec succès' ,'success',false, false);
     }
 
     public function edit($id)
@@ -74,8 +75,31 @@ class ProductController extends BaseController
         $product = $this->productRepository->updateProduct($params);
 
         if (!$product) {
-            return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la mise à jour du produit.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.products.index', 'Produit mis à jour avec succès' ,'success',false, false);
     }
+
+    public function inactif($id){
+        $product = Product::find($id);
+        if (!$product) {
+            return $this->responseRedirectBack('Une erreur s\'est produite', 'error', true, true);
+        }
+        $product->status = 0;
+        $product->save();
+        return $this->responseRedirect('admin.products.index', 'Status du Produit : inactif.' ,'success',false, false);
+
+    }
+    public function destroy($id){
+        $product = Product::find($id);
+        if (!$product) {
+            return $this->responseRedirectBack('Une erreur s\'est produite lors de la suppression  du produit.', 'error', true, true);
+        }
+
+        $product->delete();
+        return $this->responseRedirect('admin.products.index', 'Produit supprimé.' ,'success',false, false);
+
+    }
+
+
 }

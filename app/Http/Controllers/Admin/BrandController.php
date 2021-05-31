@@ -49,9 +49,14 @@ class BrandController extends BaseController
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validate($request, [
             'name'      =>  'required|max:191',
-            'image'     =>  'mimes:jpg,jpeg,png|max:1000'
+            'image'     =>  'mimes:jpg,jpeg,png|max:1000',
+            'abr' => 'required',
+            'adress' => 'required',
+            'town' => 'required',
+            'mapsLink' => 'url'
         ]);
 
         $params = $request->except('_token');

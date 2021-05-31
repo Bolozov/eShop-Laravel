@@ -20,13 +20,14 @@ class CartController extends Controller
         if (Cart::isEmpty()) {
             return redirect('/');
         }
-        return redirect()->back()->with('message', 'Item removed from cart successfully.');
+        return redirect()->back()->with('message', 'L\'article a bien été supprimé du panier.
+        ');
     }
 
     public function clearCart()
     {
         Cart::clear();
 
-        return redirect('/');
+        return redirect()->route('checkout.cart');
     }
 }

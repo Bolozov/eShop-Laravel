@@ -12,9 +12,9 @@
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                {{-- <li>
+                <li>
                     <a class="dropdown-item" href="{{ route('homepage') }}"><i class="fa fa-shopping-bag fa-lg"></i> Aller sur le site</a>
-                </li> --}}
+                </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('admin.settings') }}"><i class="fa fa-cog fa-lg"></i> Paramètres</a>
                 </li>

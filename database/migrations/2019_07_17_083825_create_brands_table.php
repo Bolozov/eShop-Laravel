@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateBrandsTable extends Migration
 {
@@ -18,6 +18,10 @@ class CreateBrandsTable extends Migration
             $table->string('name', 45);
             $table->string('slug');
             $table->string('logo')->nullable();
+            $table->string('adress')->nullable();
+            $table->string('town')->nullable();
+            $table->string('abr')->nullable();
+            $table->string('mapsLink')->nullable();
             $table->timestamps();
         });
     }

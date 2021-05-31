@@ -17,7 +17,7 @@
                     <thead>
                         <tr>
                             <th> # </th>
-                            <th> SKU </th>
+                            {{-- <th> SKU </th> --}}
                             <th> Nom </th>
                             <th class="text-center"> Magasin </th>
                             <th class="text-center"> Categories </th>
@@ -30,9 +30,9 @@
                         @foreach($products as $product)
                         <tr>
                             <td>{{ $product->id }}</td>
-                            <td>{{ $product->sku }}</td>
-                            {{-- <td> <a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></td> --}}
-                            <td> {{ $product->name }}</a></td>
+                            {{-- <td>{{ $product->sku }}</td> --}}
+                            <td> <a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></td>
+                            {{-- <td> {{ $product->name }}</a></td> --}}
                             <td>{{ $product->brand->name }}</td>
                             <td>
                                 @foreach($product->categories as $category)
@@ -50,7 +50,8 @@
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Second group">
                                     <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('admin.products.inactif', $product->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-close"></i></a>
+                                    <a href="{{ route('admin.products.delete', $product->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('voulez vous supprimez ce produit?');"><i class="fa fa-trash"></i></a>
                                 </div>
                             </td>
                         </tr>

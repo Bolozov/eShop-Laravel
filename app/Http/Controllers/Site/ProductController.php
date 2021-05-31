@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Site;
 
-use Cart;
-use Illuminate\Http\Request;
+use App\Contracts\AttributeContract;
 use App\Contracts\ProductContract;
 use App\Http\Controllers\Controller;
-use App\Contracts\AttributeContract;
+use App\Models\Product;
+use Cart;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -18,6 +19,11 @@ class ProductController extends Controller
     {
         $this->productRepository = $productRepository;
         $this->attributeRepository = $attributeRepository;
+    }
+    public function index()
+    {
+        $products = Product::with(['images', 'brand'])->paginate(12);
+        return view('site.pages.products', compact('products'));
     }
 
     public function show($slug)
@@ -35,6 +41,16 @@ class ProductController extends Controller
 
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $options);
 
-        return redirect()->back()->with('message', 'Item added to cart successfully.');
+        return redirect()->back()->with('message', 'Article ajouté au panier avec succès.
+        ');
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+        //dd($q);
+        $products = Product::where('name', 'LIKE', '%'.$q.'%')->with(['images', 'brand'])->orderBy('price','asc')->paginate(5);
+        return view('site.pages.products', compact('products'));
+
     }
 }

@@ -15,7 +15,7 @@ class Brand extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'slug', 'logo'];
+    protected $fillable = ['name', 'slug', 'logo' , 'adress' , 'town' , 'abr' , 'mapsLink' , 'lat' , 'lon'];
 
     /**
      * @param $value

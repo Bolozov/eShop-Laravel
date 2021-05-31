@@ -19,18 +19,17 @@ class OrderRepository extends BaseRepository implements OrderContract
     public function storeOrderDetails($params)
     {
         $order = Order::create([
-            'order_number'      =>  'ORD-'.strtoupper(uniqid()),
+            'order_number'      =>  'CMD-'.strtoupper(uniqid()),
             'user_id'           => auth()->user()->id,
-            'status'            =>  'pending',
+            'status'            =>  'En attente',
             'grand_total'       =>  Cart::getSubTotal(),
             'item_count'        =>  Cart::getTotalQuantity(),
             'payment_status'    =>  0,
-            'payment_method'    =>  null,
             'first_name'        =>  $params['first_name'],
             'last_name'         =>  $params['last_name'],
             'address'           =>  $params['address'],
             'city'              =>  $params['city'],
-            'country'           =>  $params['country'],
+            'country'           =>  "Tunisie",
             'post_code'         =>  $params['post_code'],
             'phone_number'      =>  $params['phone_number'],
             'notes'             =>  $params['notes']
@@ -42,8 +41,6 @@ class OrderRepository extends BaseRepository implements OrderContract
 
             foreach ($items as $item)
             {
-                // A better way will be to bring the product id with the cart items
-                // you can explore the package documentation to send product id with the cart
                 $product = Product::where('name', $item->name)->first();
 
                 $orderItem = new OrderItem([
