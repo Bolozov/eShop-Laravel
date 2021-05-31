@@ -44,7 +44,11 @@
             <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product text-center">
                     <div class="position-relative mb-3">
-                        <div class="badge text-white badge-"></div><a class="d-block" href="{{ route('product.show', $product->slug) }}">
+                        <div class="badge text-white badge-"></div>
+                        @if ($product->sale_price)
+                        <div class="badge text-white badge-danger">Solde !</div>
+                        @endif
+                        <a class="d-block" href="{{ route('product.show', $product->slug) }}">
                             @if ($product->images->count() > 0)
                             <img class="img-fluid w-100" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
 
@@ -60,7 +64,14 @@
                         </div>
                     </div>
                     <h6> <a class="reset-anchor" href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></h6>
-                    <p class="small text-muted">{{ $product->price}} DT</p>
+                    <p class="small text-muted">
+                        @if ($product->sale_price)
+                        <del>{{ $product->price}} DT</del> {{ $product->sale_price}} DT
+                        @else
+                        {{ $product->price}} DT
+                        @endif
+
+                    </p>
                     <p class="small text-muted">{{ $product->brand->name}} DT</p>
                 </div>
             </div>
