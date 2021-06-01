@@ -55,7 +55,7 @@ class ProductController extends Controller
         $products = Product::where('name', 'LIKE', '%'.$q.'%')
         ->with(['images', 'brand'])
         ->orderByRaw('IFNULL(sale_price,price) ASC')
-        ->paginate(5);
+        ->paginate(6);
         return view('site.pages.products', compact('products'));
 
     }

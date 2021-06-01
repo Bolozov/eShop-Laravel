@@ -47,15 +47,15 @@
                                 <div class="mb-3 position-relative">
                                     <div class="badge text-white badge-"></div><a class="d-block" href="{{ route('product.show', $product->slug) }}">
                                         @if ($product->images->count() > 0)
-                                        <img class="img-fluid w-100" width="176px" height="176px" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
+                                        <img   width="200px" height="200px" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
 
                                         @else
-                                        <img class="img-fluid w-100" width="176px" height="176px" src="https://via.placeholder.com/176" alt="...">
+                                        <img  width="200px" height="200px" src="https://via.placeholder.com/176" alt="...">
 
                                         @endif
                                     </a>
                                     <div class="product-overlay">
-                                        <ul class="mb-0 list-inline">
+                                        <ul class="mb-2 list-inline">
                                             {{-- <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#"><i class="far fa-heart"></i></a></li> --}}
                                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="{{ route('product.show', $product->slug) }}">Afficher les détails</a></li>
                                             {{-- <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-toggle="modal"><i class="fas fa-expand"></i></a></li> --}}
@@ -69,7 +69,7 @@
                                 @else
                                 {{ $product->price}} DT
                                 @endif
-                                <p class="small text-muted">{{ $product->brand->name}}</p>
+                                <p class="small text-muted mb-5">{{ $product->brand->name}}</p>
                             </div>
                         </div>
                         @empty
