@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Contracts\AttributeContract;
-use App\Contracts\ProductContract;
-use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Contracts\ProductContract;
+use Illuminate\Support\Facades\DB;
+use App\Contracts\AttributeContract;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -22,7 +23,9 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products = Product::with(['images', 'brand'])->paginate(12);
+        $products = Product::with(['images', 'brand'])
+        ->orderByRaw('IFNULL(sale_price,price) ASC')
+        ->paginate(6);
         return view('site.pages.products', compact('products'));
     }
 
@@ -48,8 +51,11 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $q = $request->q;
-        //dd($q);
-        $products = Product::where('name', 'LIKE', '%'.$q.'%')->with(['images', 'brand'])->orderBy('price','asc')->paginate(5);
+
+        $products = Product::where('name', 'LIKE', '%'.$q.'%')
+        ->with(['images', 'brand'])
+        ->orderByRaw('IFNULL(sale_price,price) ASC')
+        ->paginate(5);
         return view('site.pages.products', compact('products'));
 
     }

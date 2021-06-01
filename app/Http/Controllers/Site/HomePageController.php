@@ -12,7 +12,7 @@ class HomePageController extends Controller
     public function index(){
         $categories = Category::where('featured',1)->take(4)->get();
         $products = Product::with(['brand' , 'images'])->where('featured',1)->take(8)->orderBy('price')->get();
-       // dd($products);
+
         return view('site.pages.homepage', compact('categories' , 'products') );
     }
 }

@@ -12,10 +12,10 @@
         "arielmejiadev/larapex-charts": "^2.1",
         "darryldecode/cart": "~4.0",
         "fideloper/proxy": "^4.4",
+        "laravel-lang/lang": "~5.0",
         "laravel/framework": "^6.20.26",
         "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.5",
-        "paypal/rest-api-sdk-php": "^1.14",
         "typicms/nestablecollection": "^1.1"
     },
     "require-dev": {

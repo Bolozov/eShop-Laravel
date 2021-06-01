@@ -47,10 +47,10 @@
                                 <div class="mb-3 position-relative">
                                     <div class="badge text-white badge-"></div><a class="d-block" href="{{ route('product.show', $product->slug) }}">
                                         @if ($product->images->count() > 0)
-                                        <img class="img-fluid w-100" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
+                                        <img class="img-fluid w-100" width="176px" height="176px" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
 
                                         @else
-                                        <img class="img-fluid w-100" src="https://via.placeholder.com/176" alt="...">
+                                        <img class="img-fluid w-100" width="176px" height="176px" src="https://via.placeholder.com/176" alt="...">
 
                                         @endif
                                     </a>
