@@ -1,6 +1,6 @@
 @extends('site.app')
 @section('title', $product->name)
-{{-- @section('content')
+ @section('content')
 <section class="section-pagetop">
     <div class="container clearfix">
         <h2 class="title-page"></h2>
@@ -150,7 +150,7 @@
         </div>
     </div>
 </section>
-@endsection --}}
+@endsection
 
 @section('content')
 <section class="section-pagetop">
