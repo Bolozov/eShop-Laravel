@@ -30,7 +30,7 @@
                             <b>ID Commande:</b> {{ $order->order_number }}<br>
                             <b>Montante:</b> {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}<br>
                             <b>Mode de paiement:</b> {{ $order->payment_method }}<br>
-                            <b>Statut de paiement:</b> {{ $order->payment_status == 1 ? 'Completed' : 'Not Completed' }}<br>
+                            <b>Statut de paiement:</b> {{ $order->payment_status == 1 ? 'Effectué' : 'Non Effectué' }}<br>
                             <b>Statut de la commande:</b> {{ $order->status }}<br>
                         </div>
                     </div>
