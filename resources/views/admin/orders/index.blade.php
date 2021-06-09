@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{ $order->order_number }}</td>
                             <td>{{ $order->user->fullName }}</td>
-                            <td class="text-center">{{ config('settings.currency_symbol') }}{{ $order->grand_total }}</td>
+                            <td class="text-center">{{ number_format($order->grand_total, 2, ',', ' ')  }} {{ config('settings.currency_symbol') }}</td>
                             <td class="text-center">{{ $order->item_count }}</td>
                             <td class="text-center">
                                 @if ($order->payment_status == 1)

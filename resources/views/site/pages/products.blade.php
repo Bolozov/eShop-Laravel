@@ -27,12 +27,21 @@
                 <div class="col-lg-3 order-2 order-lg-1">
                     <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase font-weight-bold">Catégories</strong></div>
                     <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
-                        @foreach (\App\Models\Category::all() as $category)
-                        @if($category->featured == 1 && $category->name !== "Root")
-                        <li class="mb-2"><a class="reset-anchor text-success" href="{{ route('category.show', $category->slug) }}"> <i class="fa fa-star"></i> {{ $category->name }}</a></li>
-                        @elseif($category->name !== "Root")
-                        <li class="mb-2"><a class="reset-anchor " href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a></li>
-                        @endif
+                        @foreach (\App\Models\Category::with('children')->where('name', '!=' ,'Root')->get() as $category)
+
+                        <li class="mb-2">
+                            @if($category->children->count() == 0)
+                            <a class="reset-anchor {{ $category->featured == 1 ?  'text-success' : '' }}" href="{{ route('category.show', $category->slug) }}"> <i class="{{ $category->featured == 1 ?  'fa fa-star' : '' }} "></i> {{ $category->name }}</a>
+
+                            @else
+                            <a class="reset-anchor {{ $category->featured == 1 ?  'text-success' : '' }}" href="{{ route('category.show', $category->slug) }}"> <i class="{{ $category->featured == 1 ?  'fa fa-star' : '' }} "></i> {{ $category->name }}</a><br>
+
+                            @foreach ($category->children as $subcategory)
+                            --- <a class="reset-anchor {{ $subcategory->featured == 1 ?  'text-success' : '' }}" href="{{ route('category.show', $subcategory->slug) }}"> <i class="{{ $subcategory->featured == 1 ?  'fa fa-star' : '' }} "></i> {{ $subcategory->name }}</a>
+                            @endforeach
+                            @endif
+                        </li>
+
                         @endforeach
                     </ul>
 
@@ -47,10 +56,10 @@
                                 <div class="mb-3 position-relative">
                                     <div class="badge text-white badge-"></div><a class="d-block" href="{{ route('product.show', $product->slug) }}">
                                         @if ($product->images->count() > 0)
-                                        <img   width="200px" height="200px" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
+                                        <img width="200px" height="200px" src="{{ asset('storage/'.$product->images->first()->full) }}" alt="...">
 
                                         @else
-                                        <img  width="200px" height="200px" src="https://via.placeholder.com/176" alt="...">
+                                        <img width="200px" height="200px" src="https://via.placeholder.com/176" alt="...">
 
                                         @endif
                                     </a>
