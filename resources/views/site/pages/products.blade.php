@@ -37,7 +37,7 @@
                             <a class="reset-anchor {{ $category->featured == 1 ?  'text-success' : '' }}" href="{{ route('category.show', $category->slug) }}"> <i class="{{ $category->featured == 1 ?  'fa fa-star' : '' }} "></i> {{ $category->name }}</a><br>
 
                             @foreach ($category->children as $subcategory)
-                            --- <a class="reset-anchor {{ $subcategory->featured == 1 ?  'text-success' : '' }}" href="{{ route('category.show', $subcategory->slug) }}"> <i class="{{ $subcategory->featured == 1 ?  'fa fa-star' : '' }} "></i> {{ $subcategory->name }}</a>
+                            --- <a class="reset-anchor {{ $subcategory->featured == 1 ?  'text-primary' : '' }}" href="{{ route('category.show', $subcategory->slug) }}"> <i class="{{ $subcategory->featured == 1 ?  'fas fa-circle' : '' }} "></i> {{ $subcategory->name }}</a>
                             @endforeach
                             @endif
                         </li>
